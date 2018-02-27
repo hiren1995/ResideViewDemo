@@ -1,0 +1,6 @@
+framework module Pods_ResideViewDemo {
+  umbrella header "Pods-ResideViewDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}

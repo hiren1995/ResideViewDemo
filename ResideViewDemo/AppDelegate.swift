@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AKSideMenu
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
+        
+        self.window = UIWindow.init(frame: UIScreen.main.bounds)
+        
+        // Create content and menu controllers
+        let navigationController: UINavigationController = UINavigationController.init(rootViewController: First.init())
+        let leftMenuViewController: Left = Left.init()
+        let rightMenuViewController: Right = Right.init()
+        
+        // Create side menu controller
+        let sideMenuViewController: AKSideMenu = AKSideMenu(contentViewController: navigationController, leftMenuViewController: leftMenuViewController, rightMenuViewController: rightMenuViewController)
+        
+        // Make it a root controller
+        self.window!.rootViewController = sideMenuViewController
+        
+        sideMenuViewController.backgroundImage = UIImage(named: "bg")
+        
+        //self.window!.backgroundColor = UIColor.white
+        self.window?.makeKeyAndVisible()
+        
+        
         return true
     }
 
